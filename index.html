@@ -439,18 +439,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
             margin-top: 2rem;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
 
         .carousel-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             background: var(--accent);
             color: white;
-            padding: 0.8rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
@@ -459,8 +457,6 @@
             cursor: pointer;
             font-size: 0.9rem;
             min-height: 44px;
-            white-space: nowrap;
-            flex: 0 1 auto;
         }
 
         .carousel-btn:hover {
@@ -472,10 +468,9 @@
         .carousel-counter {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
-            min-width: 70px;
+            min-width: 80px;
             text-align: center;
             font-weight: 600;
-            flex-shrink: 0;
         }
 
         .achievement-card {
@@ -486,7 +481,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
-            group: "achievement";
+        
         }
 
         .achievement-card:hover {
@@ -507,9 +502,9 @@
         .achievement-image img {
             width: 100%;
             height: 160%;
+             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+    }
 
         .achievement-card:hover .achievement-image img {
             transform: scale(1.08);
@@ -1119,24 +1114,6 @@
                 font-size: 1.5rem;
             }
 
-            .carousel-controls {
-                gap: 0.6rem;
-                margin-top: 1.5rem;
-                flex-wrap: nowrap;
-            }
-
-            .carousel-btn {
-                padding: 0.7rem 0.9rem;
-                font-size: 0.85rem;
-                min-height: 40px;
-                flex: 0 1 auto;
-            }
-
-            .carousel-counter {
-                font-size: 0.9rem;
-                min-width: 65px;
-            }
-
             .lead-capture {
                 padding: 2rem 1rem;
                 margin: 1.5rem 0;
@@ -1324,26 +1301,6 @@
                 font-size: 0.75rem;
             }
 
-            .carousel-controls {
-                gap: 0.4rem;
-                margin-top: 1.5rem;
-                justify-content: center;
-            }
-
-            .carousel-btn {
-                padding: 0.65rem 0.7rem;
-                font-size: 0.75rem;
-                min-height: 38px;
-                flex: 0 1 auto;
-                max-width: 100px;
-            }
-
-            .carousel-counter {
-                font-size: 0.8rem;
-                min-width: 55px;
-                padding: 0 0.5rem;
-            }
-
             .pricing-card {
                 padding: 1.2rem 1rem;
             }
@@ -1419,7 +1376,7 @@
             <h1>Transform Your Body, Transform Your Life</h1>
             <p>Join thousands of members who have achieved their fitness goals with our state-of-the-art facilities and expert trainers</p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="scrollToCapture()">Claim Your Free Trial</button>
+                <button class="btn-primary" onclick="scrollToCapture()">Book Your Session</button>
                 <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">Learn More</button>
             </div>
         </div>
@@ -1471,9 +1428,9 @@
                         <!-- Slide 1 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo2.jpeg">
+                                <img src="photo2.jpeg" alt="79 KG to 65 KG">
                                 <div class="achievement-overlay"></div>
-                                
+                                <div class="achievement-badge">Featured</div>
                             </div>
                             <div class="achievement-content">
                                 <h3 class="achievement-title">79 KG → 65 KG</h3>
@@ -1499,9 +1456,9 @@
                         <!-- Slide 2 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo1.jpeg">
+                                <img src="photo1.jpeg" alt="97 KG to 87 KG">
                                 <div class="achievement-overlay"></div>
-                    
+                                <div class="achievement-badge">Featured</div>
                             </div>
                             <div class="achievement-content">
                                 <h3 class="achievement-title">97 KG → 87 KG</h3>
@@ -1527,9 +1484,9 @@
                         <!-- Slide 3 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo3.jpeg">
+                                <img src="photo3.jpeg" alt="92 KG to 83 KG">
                                 <div class="achievement-overlay"></div>
-                            
+                                <div class="achievement-badge">Featured</div>
                             </div>
                             <div class="achievement-content">
                                 <h3 class="achievement-title">92 KG → 83 KG</h3>
@@ -1555,9 +1512,9 @@
                         <!-- Slide 4 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo4.jpeg">
+                                <img src="photo4.jpeg" alt="94 KG to 71 KG">
                                 <div class="achievement-overlay"></div>
-                                
+                                <div class="achievement-badge">Featured</div>
                             </div>
                             <div class="achievement-content">
                                 <h3 class="achievement-title">94 KG → 71 KG</h3>
@@ -1583,9 +1540,9 @@
                         <!-- Slide 5 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo5.jpeg">
+                                <img src="photo5.jpeg" alt="70 KG to 57.5 KG">
                                 <div class="achievement-overlay"></div>
-                    
+                                <div class="achievement-badge">Featured</div>
                             </div>
                             <div class="achievement-content">
                                 <h3 class="achievement-title">70 KG → 57.5 KG</h3>
@@ -1633,12 +1590,12 @@
                 <div class="contact-item">
                     <div class="contact-icon">📱</div>
                     <h3>Phone</h3>
-                    <p><a href="tel:+919884094496">+91 9884094496</a></p>
+                    <p><a href="tel:+919884094496">+91 9884094496<br>+91 7200617777 </a></p>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <h3>Address</h3>
-                    <p>New Market Street<br>Choolaimedu<br>Chennai 600094</p>
+                    <p>No:18 New Market Street Choolaimedu<br>Chennai 600094</p>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">⏰</div>
@@ -1685,7 +1642,7 @@
                         <option value="general">General Fitness</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Claim Your Free Trial</button>
+                <button type="submit" class="submit-btn">Book Your Session</button>
             </form>
         </div>
     </section>
@@ -1710,7 +1667,7 @@
             </div>
             <div class="pricing-card featured">
                 <h3>QUARTERLY</h3>
-                <div class="price">₹3499<span class="price-period">/(3-Months)</span></div>
+                <div class="price">₹3499<span class="price-period">/ 3-Months</span></div>
                 <ul class="features-list">
                     <li>Personal Training Sessions</li>
                     <li>Nutrition Coaching</li>
@@ -1721,7 +1678,7 @@
             </div>
             <div class="pricing-card">
                 <h3>HALF YEARLY</h3>
-                <div class="price">₹5499<span class="price-period">(/6-months)</span></div>
+                <div class="price">₹5499<span class="price-period">/ 6-months</span></div>
                 <ul class="features-list">
                     <li>Unlimited Personal Training</li>
                     <li>Custom Meal Plans</li>
@@ -1737,7 +1694,7 @@
     <footer>
         <p>&copy; 2026 ENERGY FITNESS. All rights reserved.</p>
         <p>Transform your body, transform your life.</p>
-        
+        <P>FOLLOW US ON !!</P>
         <!-- Social Media Links -->
         <div class="social-links">
             <a href="https://www.instagram.com/efsaravanan?igsh=MWJnYTRuaGExd2dqeA==" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Follow us on Instagram">
