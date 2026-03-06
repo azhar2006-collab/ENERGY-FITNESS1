@@ -439,16 +439,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 2rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .carousel-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--accent);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
@@ -457,6 +459,8 @@
             cursor: pointer;
             font-size: 0.9rem;
             min-height: 44px;
+            white-space: nowrap;
+            flex: 0 1 auto;
         }
 
         .carousel-btn:hover {
@@ -468,9 +472,10 @@
         .carousel-counter {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
-            min-width: 80px;
+            min-width: 70px;
             text-align: center;
             font-weight: 600;
+            flex-shrink: 0;
         }
 
         .achievement-card {
@@ -481,7 +486,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
-        
+            group: "achievement";
         }
 
         .achievement-card:hover {
@@ -501,10 +506,10 @@
 
         .achievement-image img {
             width: 100%;
-            height: 160%;
-             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
-    }
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
         .achievement-card:hover .achievement-image img {
             transform: scale(1.08);
@@ -1114,6 +1119,24 @@
                 font-size: 1.5rem;
             }
 
+            .carousel-controls {
+                gap: 0.6rem;
+                margin-top: 1.5rem;
+                flex-wrap: nowrap;
+            }
+
+            .carousel-btn {
+                padding: 0.7rem 0.9rem;
+                font-size: 0.85rem;
+                min-height: 40px;
+                flex: 0 1 auto;
+            }
+
+            .carousel-counter {
+                font-size: 0.9rem;
+                min-width: 65px;
+            }
+
             .lead-capture {
                 padding: 2rem 1rem;
                 margin: 1.5rem 0;
@@ -1301,6 +1324,26 @@
                 font-size: 0.75rem;
             }
 
+            .carousel-controls {
+                gap: 0.4rem;
+                margin-top: 1.5rem;
+                justify-content: center;
+            }
+
+            .carousel-btn {
+                padding: 0.65rem 0.7rem;
+                font-size: 0.75rem;
+                min-height: 38px;
+                flex: 0 1 auto;
+                max-width: 100px;
+            }
+
+            .carousel-counter {
+                font-size: 0.8rem;
+                min-width: 55px;
+                padding: 0 0.5rem;
+            }
+
             .pricing-card {
                 padding: 1.2rem 1rem;
             }
@@ -1428,7 +1471,7 @@
                         <!-- Slide 1 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo2.jpeg" alt="79 KG to 65 KG">
+                                <img src="WhatsApp_Image_2026-03-06_at_7_24_10_PM.jpeg" alt="79 KG to 65 KG">
                                 <div class="achievement-overlay"></div>
                                 <div class="achievement-badge">Featured</div>
                             </div>
@@ -1456,7 +1499,7 @@
                         <!-- Slide 2 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo1.jpeg" alt="97 KG to 87 KG">
+                                <img src="WhatsApp_Image_2026-03-06_at_7_24_32_PM.jpeg" alt="97 KG to 87 KG">
                                 <div class="achievement-overlay"></div>
                                 <div class="achievement-badge">Featured</div>
                             </div>
@@ -1484,7 +1527,7 @@
                         <!-- Slide 3 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo3.jpeg" alt="92 KG to 83 KG">
+                                <img src="WhatsApp_Image_2026-03-06_at_7_24_56_PM.jpeg" alt="92 KG to 83 KG">
                                 <div class="achievement-overlay"></div>
                                 <div class="achievement-badge">Featured</div>
                             </div>
@@ -1512,7 +1555,7 @@
                         <!-- Slide 4 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo4.jpeg" alt="94 KG to 71 KG">
+                                <img src="WhatsApp_Image_2026-03-06_at_7_25_34_PM.jpeg" alt="94 KG to 71 KG">
                                 <div class="achievement-overlay"></div>
                                 <div class="achievement-badge">Featured</div>
                             </div>
@@ -1540,7 +1583,7 @@
                         <!-- Slide 5 -->
                         <div class="achievement-card carousel-slide">
                             <div class="achievement-image">
-                                <img src="photo5.jpeg" alt="70 KG to 57.5 KG">
+                                <img src="WhatsApp_Image_2026-03-06_at_7_26_24_PM.jpeg" alt="70 KG to 57.5 KG">
                                 <div class="achievement-overlay"></div>
                                 <div class="achievement-badge">Featured</div>
                             </div>
