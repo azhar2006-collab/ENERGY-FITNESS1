@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>ENERGY FITNESS - Transform Your Body, Transform Your Life</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --accent: #ff6b35;
+            --accent-light: #ffa366;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --bg-light: #f5f5f5;
+            --border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.65rem 1.3rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background: #ff5520;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            gap: 0.4rem;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 0.8s ease-out;
+            width: 100%;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            margin-bottom: 1.2rem;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 1.8rem;
+            color: #d0d0d0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            background: #ff5520;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 0.85rem 2rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 3rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--accent);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ACHIEVEMENTS SECTION */
+        .achievements {
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .achievements-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievements-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .achievements-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievements-title p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .achievements-carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .achievements-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .achievements-carousel {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 0;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            margin: 0 !important;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .carousel-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            min-height: 44px;
+        }
+
+        .carousel-btn:hover {
+            background: #ff5520;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+
+        .carousel-counter {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            min-width: 80px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2), inset 0 0 20px rgba(255, 107, 53, 0.05);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: 160%;
+             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+    }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.08);
+        }
+
+        .achievement-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 107, 53, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-overlay {
+            opacity: 1;
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 10;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .achievement-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, white 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievement-description {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .achievement-cta {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .achievement-cta:hover {
+            background: #ff5520;
+            transform: translateX(4px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: white;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffa366;
+            text-decoration: underline;
+        }
+
+        /* Lead Capture Section */
+        .lead-capture {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .capture-container {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .capture-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .capture-title h2 {
+            color: white;
+            margin-bottom: 0.8rem;
+            font-size: 1.8rem;
+        }
+
+        .capture-title p {
+            color: #d0d0d0;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        .form-group select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.8rem;
+            min-height: 48px;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background: #ff5520;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .error-message {
+            display: none;
+            background: #f44336;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 3rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 107, 53, 0.01) 100%);
+            transform: scale(1.03);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.8rem 0;
+        }
+
+        .price-period {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓ ';
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-btn.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: #fff;
+        }
+
+        .social-btn.facebook:hover {
+            background: #1877f2;
+            border-color: #fff;
+        }
+
+        .social-btn.youtube:hover {
+            background: #ff0000;
+            border-color: #fff;
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                list-style: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                padding: 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #eee;
+                font-size: 1rem;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-buttons {
+                gap: 0.8rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+                min-height: 44px;
+            }
+
+            .features {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .section-title h2 {
+                margin-bottom: 0.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+
+            .achievements {
+                padding: 3rem 1rem;
+            }
+
+            .achievements-title h2 {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .achievement-card {
+                border-radius: 8px;
+            }
+
+            .achievement-image {
+                height: 280px;
+            }
+
+            .achievement-content {
+                padding: 1.5rem;
+            }
+
+            .achievement-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .achievement-description {
+                font-size: 0.95rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .achievement-stats {
+                gap: 1rem;
+                margin-bottom: 1.2rem;
+                padding-bottom: 1.2rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .lead-capture {
+                padding: 2rem 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .capture-container {
+                width: 100%;
+            }
+
+            .capture-title h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .capture-title p {
+                font-size: 0.95rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
+            }
+
+            .contact-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-item h3 {
+                font-size: 1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .contact-item p {
+                font-size: 0.95rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 0.75rem;
+                font-size: 16px;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+                font-size: 16px;
+                margin-top: 0.6rem;
+            }
+
+            .pricing {
+                padding: 2rem 1rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                margin-top: 2rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-3px);
+            }
+
+            .pricing-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .price {
+                font-size: 1.8rem;
+                margin: 0.6rem 0;
+            }
+
+            .features-list li {
+                padding: 0.5rem 0;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+                margin: 0.3rem 0;
+            }
+
+            .social-links {
+                gap: 1.2rem;
+                margin-top: 1.2rem;
+                padding-top: 1.2rem;
+            }
+
+            .social-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                font-size: 0.9rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .feature-icon {
+                font-size: 1.8rem;
+            }
+
+            .feature-card h3 {
+                font-size: 0.95rem;
+            }
+
+            .feature-card p {
+                font-size: 0.85rem;
+            }
+
+            .achievements-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .achievement-image {
+                height: 240px;
+            }
+
+            .achievement-title {
+                font-size: 1.2rem;
+            }
+
+            .achievement-stats {
+                gap: 0.8rem;
+                padding-bottom: 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .pricing-card {
+                padding: 1.2rem 1rem;
+            }
+
+            .price {
+                font-size: 1.6rem;
+            }
+
+            .price-period {
+                font-size: 0.8rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 1rem 0;
+            }
+
+            .contact-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .contact-item h3 {
+                font-size: 0.95rem;
+            }
+
+            .contact-item p {
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
+
+            .social-btn {
+                width: 38px;
+                height: 38px;
+            }
+
+            .social-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">ENERGY<span>FITNESS</span></a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="cta-btn" onclick="scrollToCapture()">Get Started</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Body, Transform Your Life</h1>
+            <p>Join thousands of members who have achieved their fitness goals with our state-of-the-art facilities and expert trainers</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToCapture()">Claim Your Free Trial</button>
+                <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Choose ENERGYFITNESS</h2>
+            <p style="font-size: 1.1rem; color: #666;">We provide everything you need to reach your fitness goals</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💪</div>
+                <h3>Expert Trainers</h3>
+                <p>Certified professionals ready to guide your fitness journey and create personalized workout plans</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🥗</div>
+                <h3>Nutrition Plans</h3>
+                <p>Customized meal planning and nutritional guidance to complement your training regimen</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Community</h3>
+                <p>Connect with like-minded fitness enthusiasts and celebrate achievements together</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>FLEXIBLE HOURS</h3>
+                <p>Morning 5:30am - 1:30 pm / Evening 4pm - 9:30pm. Train on your schedule with facility access for all members</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="achievements" id="achievements">
+        <div class="achievements-content">
+            <div class="achievements-title">
+                <h2>🏆 Success Stories & Achievements</h2>
+                <p>Real transformations from our dedicated members</p>
+            </div>
+
+            <!-- Achievements Carousel -->
+            <div class="achievements-carousel-container">
+                <div class="achievements-carousel-wrapper">
+                    <div class="achievements-carousel" id="achievementsCarousel">
+                        <!-- Slide 1 -->
+                        <div class="achievement-card carousel-slide">
+                            <div class="achievement-image">
+                                <img src="photo2.jpeg" alt="79 KG to 65 KG">
+                                <div class="achievement-overlay"></div>
+                                <div class="achievement-badge">Featured</div>
+                            </div>
+                            <div class="achievement-content">
+                                <h3 class="achievement-title">79 KG → 65 KG</h3>
+                                <p class="achievement-description">Incredible transformation showing dedication and commitment to fitness goals. This client achieved remarkable results through consistent training.</p>
+                                <div class="achievement-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">14 KG</span>
+                                        <span class="stat-label">Lost</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">12</span>
+                                        <span class="stat-label">Weeks</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">100%</span>
+                                        <span class="stat-label">Success</span>
+                                    </div>
+                                </div>
+                                <button class="achievement-cta" onclick="scrollToCapture()">Start Your Journey</button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="achievement-card carousel-slide">
+                            <div class="achievement-image">
+                                <img src="photo1.jpeg" alt="97 KG to 87 KG">
+                                <div class="achievement-overlay"></div>
+                                <div class="achievement-badge">Featured</div>
+                            </div>
+                            <div class="achievement-content">
+                                <h3 class="achievement-title">97 KG → 87 KG</h3>
+                                <p class="achievement-description">Outstanding progress with visible muscle definition and strength gains. This transformation demonstrates the power of consistent training.</p>
+                                <div class="achievement-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">10 KG</span>
+                                        <span class="stat-label">Lost</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">16</span>
+                                        <span class="stat-label">Weeks</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">+5 KG</span>
+                                        <span class="stat-label">Muscle</span>
+                                    </div>
+                                </div>
+                                <button class="achievement-cta" onclick="scrollToCapture()">Start Your Journey</button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="achievement-card carousel-slide">
+                            <div class="achievement-image">
+                                <img src="photo3.jpeg" alt="92 KG to 83 KG">
+                                <div class="achievement-overlay"></div>
+                                <div class="achievement-badge">Featured</div>
+                            </div>
+                            <div class="achievement-content">
+                                <h3 class="achievement-title">92 KG → 83 KG</h3>
+                                <p class="achievement-description">Remarkable body composition change with noticeable muscle development. This client's transformation is truly inspiring and motivating.</p>
+                                <div class="achievement-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">9 KG</span>
+                                        <span class="stat-label">Lost</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">14</span>
+                                        <span class="stat-label">Weeks</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">100%</span>
+                                        <span class="stat-label">Satisfied</span>
+                                    </div>
+                                </div>
+                                <button class="achievement-cta" onclick="scrollToCapture()">Start Your Journey</button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="achievement-card carousel-slide">
+                            <div class="achievement-image">
+                                <img src="photo4.jpeg" alt="94 KG to 71 KG">
+                                <div class="achievement-overlay"></div>
+                                <div class="achievement-badge">Featured</div>
+                            </div>
+                            <div class="achievement-content">
+                                <h3 class="achievement-title">94 KG → 71 KG</h3>
+                                <p class="achievement-description">Exceptional transformation showing the most dramatic change. This client's commitment resulted in an incredible body transformation.</p>
+                                <div class="achievement-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">23 KG</span>
+                                        <span class="stat-label">Lost</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">20</span>
+                                        <span class="stat-label">Weeks</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">95%</span>
+                                        <span class="stat-label">Fat Loss</span>
+                                    </div>
+                                </div>
+                                <button class="achievement-cta" onclick="scrollToCapture()">Start Your Journey</button>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="achievement-card carousel-slide">
+                            <div class="achievement-image">
+                                <img src="photo5.jpeg" alt="70 KG to 57.5 KG">
+                                <div class="achievement-overlay"></div>
+                                <div class="achievement-badge">Featured</div>
+                            </div>
+                            <div class="achievement-content">
+                                <h3 class="achievement-title">70 KG → 57.5 KG</h3>
+                                <p class="achievement-description">Successful lean body transformation at ENERGY FITNESS STUDIO. This client's consistent dedication created this outstanding result.</p>
+                                <div class="achievement-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">12.5 KG</span>
+                                        <span class="stat-label">Lost</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">18</span>
+                                        <span class="stat-label">Weeks</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">+150%</span>
+                                        <span class="stat-label">Energy</span>
+                                    </div>
+                                </div>
+                                <button class="achievement-cta" onclick="scrollToCapture()">Start Your Journey</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="prevAchievementSlide()">← Previous</button>
+                    <span class="carousel-counter"><span id="achievement-current-slide">1</span> / 5</span>
+                    <button class="carousel-btn" onclick="nextAchievementSlide()">Next →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Section -->
+    <section class="lead-capture" id="contact">
+        <div class="capture-container">
+            <div class="capture-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to transform? Contact us today!</p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+919884094496">+91 9884094496</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>New Market Street<br>Choolaimedu<br>Chennai 600094</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <h3>Hours</h3>
+                    <p>Morning: 5:30 AM - 1:30 PM<br>Evening: 4:00 PM - 9:30 PM</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0; font-size: 0.9rem; color: rgba(255,255,255,0.7);">
+                OR
+            </div>
+
+            <div class="capture-title">
+                <h2>Join Our Free Trial</h2>
+                <p>Fill the form below to claim your free trial</p>
+            </div>
+            <div id="successMessage" class="success-message">
+                ✓ Thanks for signing up! We'll contact you soon.
+            </div>
+            <div id="errorMessage" class="error-message">
+                Please fill in all fields correctly.
+            </div>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="goal">Fitness Goal *</label>
+                    <select id="goal" name="goal" required>
+                        <option value="">Select your primary goal</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="muscle-gain">Muscle Gain</option>
+                        <option value="endurance">Endurance Training</option>
+                        <option value="flexibility">Flexibility & Wellness</option>
+                        <option value="general">General Fitness</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Claim Your Free Trial</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-title">
+            <h2>Simple, Transparent Pricing</h2>
+            <p style="font-size: 1.1rem; color: #666;">Choose the plan that fits your lifestyle</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>MONTHLY</h3>
+                <div class="price">₹1499<span class="price-period">/month</span></div>
+                <ul class="features-list">
+                    <li>Gym Access</li>
+                    <li>Personal Training</li>
+                    <li>Community Access</li>
+                    <li>Monthly Fitness Plan</li>
+                </ul>
+                <button class="btn-primary" onclick="scrollToCapture()">Get Started</button>
+            </div>
+            <div class="pricing-card featured">
+                <h3>QUARTERLY</h3>
+                <div class="price">₹3499<span class="price-period">/(3-Months)</span></div>
+                <ul class="features-list">
+                    <li>Personal Training Sessions</li>
+                    <li>Nutrition Coaching</li>
+                    <li>Priority Support</li>
+                    <li>Custom Plans</li>
+                </ul>
+                <button class="btn-primary" onclick="scrollToCapture()">Get Started</button>
+            </div>
+            <div class="pricing-card">
+                <h3>HALF YEARLY</h3>
+                <div class="price">₹5499<span class="price-period">(/6-months)</span></div>
+                <ul class="features-list">
+                    <li>Unlimited Personal Training</li>
+                    <li>Custom Meal Plans</li>
+                    <li>Recovery Services</li>
+                    <li>VIP Support</li>
+                </ul>
+                <button class="btn-primary" onclick="scrollToCapture()">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ENERGY FITNESS. All rights reserved.</p>
+        <p>Transform your body, transform your life.</p>
+        
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="https://www.instagram.com/efsaravanan?igsh=MWJnYTRuaGExd2dqeA==" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Follow us on Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100066761906495" target="_blank" rel="noopener noreferrer" class="social-btn facebook" title="Follow us on Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://youtube.com/@energyfitnessstudiosaravan2483?si=Z_oiVkxOdoptH9VU" target="_blank" rel="noopener noreferrer" class="social-btn youtube" title="Subscribe to our YouTube Channel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('leadForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Achievement Carousel Variables
+        let currentAchievementSlide = 0;
+        const totalAchievementSlides = 5;
+
+        function showAchievementSlide(n) {
+            const carousel = document.getElementById('achievementsCarousel');
+            if (n >= totalAchievementSlides) currentAchievementSlide = 0;
+            if (n < 0) currentAchievementSlide = totalAchievementSlides - 1;
+            
+            carousel.style.transform = `translateX(-${currentAchievementSlide * 100}%)`;
+            document.getElementById('achievement-current-slide').textContent = currentAchievementSlide + 1;
+        }
+
+        function nextAchievementSlide() {
+            currentAchievementSlide++;
+            showAchievementSlide(currentAchievementSlide);
+        }
+
+        function prevAchievementSlide() {
+            currentAchievementSlide--;
+            showAchievementSlide(currentAchievementSlide);
+        }
+
+        // Auto-advance achievement slides every 10 seconds
+        setInterval(nextAchievementSlide, 10000);
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        function scrollToCapture() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const goal = document.getElementById('goal').value;
+
+            // Simple validation
+            if (!name || !email || !phone || !goal) {
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+                return;
+            }
+
+            // Show success message
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+
+            // Prepare lead data
+            const leadData = {
+                name: name,
+                email: email,
+                phone: phone,
+                goal: goal,
+                timestamp: new Date().toISOString()
+            };
+
+            // Log to console
+            console.log('Lead captured:', leadData);
+
+            // Reset form
+            form.reset();
+
+            // Hide success message after 4 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 4000);
+        });
+
+        // Smooth navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Prevent zoom on input focus (iOS)
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.fontSize = '16px';
+            });
+        });
+    </script>
+</body>
+</html>
